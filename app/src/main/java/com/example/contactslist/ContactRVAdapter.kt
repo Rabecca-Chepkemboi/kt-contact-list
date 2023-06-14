@@ -17,10 +17,13 @@ RecyclerView.Adapter<ContactRVAdapter.ViewHolder>(){
     }
     override fun onBindViewHolder(holder: ContactRVAdapter.ViewHolder, position: Int) {
         val contact = contactList[position]
+//        var binding = holder.binding
         holder.itemView.findViewById<ImageView>(R.id.ivAvatar).setImageResource(contact.imageResId)
         holder.itemView.findViewById<TextView>(R.id.tvName).text = contact.firstName
         holder.itemView.findViewById<TextView>(R.id.tvEmail).text = contact.email
         holder.itemView.findViewById<TextView>(R.id.tvPhoneNumber).text = contact.phoneNumber
+//        picasso.get().load(contact.image).resize(80, 80).into(binding.ivContact)
+//            .centreCrop
     }
     override fun getItemCount(): Int{
         return contactList.size

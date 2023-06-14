@@ -10,9 +10,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val contacts = mutableListOf(
-            ContactData( "Mercy", "mercy@example.com", "+254789453", imageResId = R.drawable.avatar),
+            ContactData( "Mercy", "mercy@gmail.com", "+254789453", imageResId = R.drawable.avatar),
             ContactData("Clarah",  "clarah@gmail.com", "+2567894532", imageResId = R.drawable.avatar),
             ContactData("Ann","ann@gmail.com","0785645342", imageResId = R.drawable.avatar),
+            ContactData("Daisy", "daisy@gmail.com", "074356287", imageResId = R.drawable.avatar),
+            ContactData("Morgan", "morgan@gmail.com", "073254760", imageResId = R.drawable.avatar),
+            ContactData("John", "john@gmail.com", "0712456789", imageResId = R.drawable.avatar),
             ContactData("Issabellah" ,"issabellah@gmail.com", "072536378", imageResId = R.drawable.avatar ),
             ContactData( "Vince", "vince@gmail.com",  "075649384", imageResId = R.drawable.avatar),
             ContactData("Ambrose", "ambrose@gmai.com", "0798032356", imageResId = R.drawable.avatar),
