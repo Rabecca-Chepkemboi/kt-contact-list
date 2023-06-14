@@ -23,6 +23,6 @@ class MainActivity : AppCompatActivity() {
         )
         val recyclerView = findViewById<RecyclerView>(R.id.rvContact)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = ContactRVAdapter(contacts)
+        recyclerView.adapter = ContactRvAdapter(contacts)
     }
 }
