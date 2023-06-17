@@ -7,32 +7,71 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.contactslist.ContactData
+import com.example.contactslist.databinding.ContactListItemBinding
+import com.squareup.picasso.Picasso
 
-class  ContactRvAdapter(private val contactList: List<ContactData>) :
-    RecyclerView.Adapter<ContactRvAdapter.ViewHolder>() {
+//class  ContactAdapter(var contactList: List<ContactData>) : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
+//
+//
+//
+//    //    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
+//
+//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):ContactViewHolder{
+//        val binding=ContactListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+//        return ContactViewHolder(binding)
+//
+//    }
+//
+//    override fun onBindViewHolder(holder:ContactViewHolder,position:Int){
+//        val contact = contactList.get(position)
+//        val binding=holder.binding
+//        binding.ivAvatar.tag=contact.ImageResId
+//        binding.tvName.text = contact.Name
+//        binding.tvPhoneNumber.text = contact.PhoneNumber
+//        binding.tvEmail.text = contact.Email
+//
+//        Picasso
+//            .get()
+//            .load(contact.ImageResId)
+//            .resize(80, 80)
+//            .centerCrop()
+//            .into(binding.ivAvatar)
+//    }
+//
+//    override fun getItemCount(): Int{
+//        return contactList.size
+//    }
+//    class ContactViewHolder(var binding:ContactListItemBinding): ViewHolder(binding.root)
+//}
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
+class ContactAdapter(var contactList: List<ContactData>) : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.contact_list_item, parent, false)
-        return ViewHolder(view)
-
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
+        val binding = ContactListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ContactViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
         val contact = contactList[position]
+        val binding = (holder as ContactViewHolder).binding
+        binding.ivAvatar.tag = contact.ImageResId
+        binding.tvName.text = contact.Name
+        binding.tvPhoneNumber.text = contact.PhoneNumber
+        binding.tvEmail.text = contact.Email
 
-        holder.itemView.findViewById<ImageView>(R.id.ivAvatar).setImageResource(contact.imageResId)
-        holder.itemView.findViewById<TextView>(R.id.tvName).text = contact.firstName
-        holder.itemView.findViewById<TextView>(R.id.tvEmail).text = contact.email
-        holder.itemView.findViewById<TextView>(R.id.tvPhoneNumber).text = contact.phoneNumber
-
+        Picasso
+            .get()
+            .load(contact.ImageResId)
+            .resize(80, 80)
+            .centerCrop()
+            .into(binding.ivAvatar)
     }
 
-    override fun getItemCount(): Int{
+    override fun getItemCount(): Int {
         return contactList.size
     }
 
+    class ContactViewHolder(var binding: ContactListItemBinding) : RecyclerView.ViewHolder(binding.root)
 }
